@@ -14,9 +14,9 @@ class formCadastro extends Component {
 
         _cadastraUsuario()
         {
-          const {nome,email,senha} = this.props;
+          const {nome,email,senha, navigation} = this.props;
 
-          this.props.cadastraUsuario({nome,email,senha});
+          this.props.cadastraUsuario({nome,email,senha, navigation});
         }
 
         render()
@@ -43,9 +43,11 @@ class formCadastro extends Component {
 
                   <TextInput
                       value={this.props.senha}
+                      secureTextEntry
                       style={{fontSize: 20,  borderColor: 'black', borderWidth: 1}}
                       placeholder='Senha'
                       placeholderTextColor='#fff'onChangeText ={(texto) => this.props.modificaSenha(texto)}/>
+                  <Text style={{color:'#ff0000', fontSize: 18}}>{this.props.erroCadastro}</Text>
                 </View>
 
                 <View style={{flex:1}}>
@@ -64,7 +66,8 @@ const mapStateToProps = state => (
   {
     nome: state.AutenticacaoReducer.nome,
     email: state.AutenticacaoReducer.email,
-    senha: state.AutenticacaoReducer.senha
+    senha: state.AutenticacaoReducer.senha,
+    erroCadastro: state.AutenticacaoReducer.erroCadastro
   }
 )
 
