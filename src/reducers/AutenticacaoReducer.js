@@ -4,10 +4,13 @@ const INITIAL_STATE = {
   nome: '',
   email: '',
   senha: '',
-  erroCadastro: 'Erro monstro'
+  erroCadastro: 'Erro monstro',
+  erroLogin: ''
 }
 
 export default (state = INITIAL_STATE, action)=>{
+
+  console.log(action);
 
   if(action.type == 'modifica_email')
   {
@@ -33,5 +36,11 @@ export default (state = INITIAL_STATE, action)=>{
   {
     return({...state, nome: '', senha: ''})
   }
+
+  if(action.type == 'login_usuario_erro')
+  {
+    return ({...state, erroLogin: action.payload})
+  }
+
   return state;
 }
