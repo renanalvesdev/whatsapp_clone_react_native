@@ -4,6 +4,7 @@ import FormCadastro from './FormCadastro';
 import FormLogin from './FormLogin';
 import BoasVindas from './BoasVindas';
 import Principal from './Principal';
+import TabBarMenu from './TabBarMenu';
 
   export const CenaPrincipalStack = StackNavigator(
     {
@@ -35,17 +36,21 @@ import Principal from './Principal';
 
       Principal:
       {
+        //screen Principal é uma tab navigation
         screen: Principal,
         navigationOptions:{
-          title: 'Principal',
-          header: null
+
+          headerStyle: {
+            backgroundColor: '#115e54'
+          },
+          headerTitle: TabBarMenu
         }
       }
 
     },
 
     {
-      initialRouteName: 'BoasVindas',
+      initialRouteName: 'Principal',
       navigationOptions:
       {
         headerStyle: {backgroundColor: '#115e54',},
@@ -54,8 +59,5 @@ import Principal from './Principal';
       }
 
     }
-
-
-
 
   );

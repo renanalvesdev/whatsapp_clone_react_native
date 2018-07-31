@@ -1,16 +1,24 @@
+
 import React from 'react';
-import {
-  View,
-  Button,
-  Text
-} from 'react-native';
+import { Text, View } from 'react-native';
+import { createMaterialTopTabNavigator } from 'react-navigation';
+import TabBarMenu from './TabBarMenu';
+import Contatos from './Contatos';
+import Conversas from './Conversas';
 
+export default createMaterialTopTabNavigator({
+      Contatos: Contatos,
+      Conversas: Conversas,
+  },
+  {
+      tabBarOptions:
+      {
+          style: {
+            elevation: 4,
+            marginBottom: 6,
+            backgroundColor: '#115e54',
+          },
+      }
+  }
 
-const Principal =  props => (
-
-  <View style= {{marginTop: 100}}>
-    <Text> Página principal da aplicação </Text>
-  </View>
 );
-
-export default Principal;
