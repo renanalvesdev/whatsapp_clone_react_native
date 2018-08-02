@@ -3,6 +3,7 @@ import {StackNavigator} from 'react-navigation';
 import FormCadastro from './FormCadastro';
 import FormLogin from './FormLogin';
 import BoasVindas from './BoasVindas';
+import AdicionarContato from './AdicionarContato';
 import Principal from './Principal';
 import TabBarMenu from './TabBarMenu';
 
@@ -43,14 +44,21 @@ import TabBarMenu from './TabBarMenu';
           headerStyle: {
             backgroundColor: '#115e54'
           },
-          headerTitle: TabBarMenu
+          headerTitle: <TabBarMenu/>
+        }
+      },
+
+      AdicionarContato: {
+        screen: AdicionarContato,
+        navigationOptions: {
+          title: 'Adicionar Contato'
         }
       }
 
     },
 
     {
-      initialRouteName: 'Principal',
+      initialRouteName: 'FormLogin',
       navigationOptions:
       {
         headerStyle: {backgroundColor: '#115e54',},
