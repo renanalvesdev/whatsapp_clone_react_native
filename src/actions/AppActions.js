@@ -6,7 +6,8 @@ import
 {
   MODIFICA_ADICIONA_CONTATO_EMAIL,
   ADICIONA_CONTATO_ERRO,
-  ADICIONA_CONTATO_SUCESSO
+  ADICIONA_CONTATO_SUCESSO,
+  LISTA_CONTATO_USUARIO
 } from './types';
 
 export const modificaAdicionaContatoEmail = (texto) => {
@@ -62,12 +63,36 @@ const adicionaContatoErro = (erro, dispatch ) => (
         payload: erro
       }
   )
-)
+);
 
 const adicionaContatoSucesso = (dispatch) => (
   dispatch(
     {
-      type: ADICIONA_CONTATO_SUCESSO
+      type: ADICIONA_CONTATO_SUCESSO,
+      payload: true
     }
   )
-)
+);
+
+
+export const habilitaInclusaoContato = () => {
+  return {
+    type: ADICIONA_CONTATO_SUCESSO,
+    payload: false
+
+  }
+}
+
+export const contatosUsuarioFetch = () => {
+  const {currentUser} = firebase.auth(); //firebase.auth().currentUser
+
+  return(dispatch) => {
+    let emailUsuarioB64 = b64.encode(currentUser.email);
+
+    firebase.database().ref(`/usuario_contatos/${emailUsuarioB64}`)
+        .on("value", snapshot => {
+            console.log(snapshot.val());
+            dispatch({type: LISTA_CONTATO_USUARIO, payload: snapshot.val()})
+        })
+  }
+}

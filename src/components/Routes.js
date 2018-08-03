@@ -39,13 +39,14 @@ import TabBarMenu from './TabBarMenu';
       {
         //screen Principal é uma tab navigation
         screen: Principal,
-        navigationOptions:{
-
-          headerStyle: {
-            backgroundColor: '#115e54'
-          },
-          headerTitle: <TabBarMenu/>
-        }
+        navigationOptions: (navigation) => (
+          {
+            headerStyle: {
+              backgroundColor: '#115e54'
+            },
+            headerTitle: <TabBarMenu navigation={navigation}/>
+          }
+        )
       },
 
       AdicionarContato: {
