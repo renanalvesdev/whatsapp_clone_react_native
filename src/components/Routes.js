@@ -6,6 +6,7 @@ import BoasVindas from './BoasVindas';
 import AdicionarContato from './AdicionarContato';
 import Principal from './Principal';
 import TabBarMenu from './TabBarMenu';
+import Conversa from './Conversa';
 
   export const CenaPrincipalStack = StackNavigator(
     {
@@ -54,6 +55,15 @@ import TabBarMenu from './TabBarMenu';
         navigationOptions: {
           title: 'Adicionar Contato'
         }
+      },
+
+      Conversa: {
+        screen: Conversa,
+        navigationOptions: (navigation) => (
+          {
+            title: 'Conversa'
+          }  
+        )
       }
 
     },
