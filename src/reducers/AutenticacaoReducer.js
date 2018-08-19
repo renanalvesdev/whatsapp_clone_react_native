@@ -6,7 +6,8 @@ import {
    CADASTRO_USUARIO_SUCESSO,
    CADASTRO_EM_ANDAMENTO,
    LOGIN_USUARIO_ERRO,
-   LOGIN_EM_ANDAMENTO
+   LOGIN_EM_ANDAMENTO,
+   LOGIN_USUARIO_SUCESSO,
 } from '../actions/types.js';
 
 
@@ -23,7 +24,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
 
-       console.log(action);
+
         switch(action.type) {
             case MODIFICA_EMAIL:
                return {...state, email: action.payload}
@@ -37,6 +38,8 @@ export default (state = INITIAL_STATE, action) => {
                return({...state, nome: '', senha: '', loading_cadastro: false})
             case LOGIN_USUARIO_ERRO:
                return ({...state, erroLogin: action.payload, loading_login: false})
+            case LOGIN_USUARIO_SUCESSO:
+                return({...state, ...INITIAL_STATE})
             case LOGIN_EM_ANDAMENTO:
                return({...state,loading_login: true})
             case CADASTRO_EM_ANDAMENTO:

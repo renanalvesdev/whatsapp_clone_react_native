@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {withNavigation} from 'react-navigation';
 import {connect} from 'react-redux';
 import {habilitaInclusaoContato} from '../actions/AppActions';
-
+import firebase from 'firebase';
 
 
  class TabBarMenu extends React.Component
@@ -34,7 +34,14 @@ import {habilitaInclusaoContato} from '../actions/AppActions';
                    </TouchableHighlight>
                  </View>
                  <View>
-                   <Text style={{fontSize: 20, color: '#fff', justifyContent: 'center'}}>Sair</Text>
+                    <TouchableHighlight
+                          onPress={() => firebase.auth().signOut()
+                                .then(() =>  this.props.navigation.navigation.navigate('FormLogin')) }
+                    >
+                        <Text style={{fontSize: 20, color: '#fff', justifyContent: 'center'}}>
+                            Sair
+                        </Text>
+                    </TouchableHighlight>
                  </View>
 
                </View>

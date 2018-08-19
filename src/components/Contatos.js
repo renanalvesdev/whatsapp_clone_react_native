@@ -25,6 +25,7 @@ class Contatos extends Component {
 
     //método de ciclo de vida que é executado sempre que as propriedades são modificadas
     componentWillReceiveProps(nextProps){
+      
           this.criaFonteDeDados(nextProps.contatos)
           //console.log('recuperado via props após update', nextProps.contatos)
     }
@@ -67,7 +68,7 @@ mapStateToProps = state => {
     const contatos = _.map(state.ListaContatosReducer, (val, uid) => {
         return {...val, uid}
     })
-    console.log(contatos);
+
     return{contatos}
 }
 
